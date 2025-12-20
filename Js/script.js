@@ -65,13 +65,36 @@ window.onscroll = function() {
 
 
  // Toggle mobile menu
-  const toggle = document.getElementById('menu-toggle');
-  const navMenu = document.getElementById('nav-menu');
 
-  toggle.onclick = function() {
-    navMenu.classList.toggle('active');
-    toggle.classList.toggle('open');
-  };
+const toggle = document.getElementById('menu-toggle');
+const navMenu = document.getElementById('nav-menu');
+const closeBtn = document.getElementById('close-btn');
+const overlay = document.getElementById('overlay');
+
+toggle.onclick = () => {
+    navMenu.classList.add('active');
+    overlay.classList.add('active');
+};
+
+closeBtn.onclick = () => {
+    navMenu.classList.remove('active');
+    overlay.classList.remove('active');
+};
+
+overlay.onclick = () => {
+    navMenu.classList.remove('active');
+    overlay.classList.remove('active');
+};
+
+document.querySelectorAll('.nav-item a').forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+});
+
+
+
 
 
   
